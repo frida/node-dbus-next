@@ -1,6 +1,7 @@
 
 declare module 'dbus-next' {
     import { EventEmitter } from "events";
+    import { Duplex } from "stream";
 
     export type ObjectPath = string;
     export type PropertyAccess = "read" | "write" | "readwrite";
@@ -156,7 +157,13 @@ declare module 'dbus-next' {
         busAddress?: string;
     }
 
+    export interface PeerBusOptions {
+        authMethods?: AuthMethod[];
+        negotiateUnixFd?: boolean;
+    }
+
     export function setBigIntCompat(state: boolean): void;
     export function systemBus(options?: SystemBusOptions): MessageBus;
     export function sessionBus(options?: SessionBusOptions): MessageBus;
+    export function peerBus(stream: Duplex, options?: PeerBusOptions): MessageBus;
 }
