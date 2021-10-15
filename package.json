@@ -23,6 +23,10 @@
   },
   "main": "index.js",
   "types": "types.d.ts",
+  "browser": {
+    "./lib/handshake.js": "./lib/handshake-browser.js",
+    "./lib/stream.js": "./lib/stream-browser.js"
+  },
   "maintainers": [
     {
       "name": "Tony Crisci",
