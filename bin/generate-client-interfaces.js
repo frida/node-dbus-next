@@ -5,7 +5,7 @@ import * as dbus from '../index.js';
 import fs from 'fs';
 import Handlebars from 'handlebars';
 import path from 'path';
-import xml2js from 'xml2js';
+import xml2js from '@frida/xml2js';
 
 let parser = new xml2js.Parser();
 const Message = dbus.Message;
