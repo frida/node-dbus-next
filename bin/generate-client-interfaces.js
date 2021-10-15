@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const xml2js = require('xml2js');
-const Handlebars = require('handlebars');
+import program from 'commander';
+import * as dbus from '../index.js';
+import fs from 'fs';
+import Handlebars from 'handlebars';
+import path from 'path';
+import xml2js from 'xml2js';
+
 let parser = new xml2js.Parser();
-const program = require('commander');
-const dbus = require('../');
 const Message = dbus.Message;
 const {
     METHOD_RETURN,

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const xml2js = require('xml2js');
-const Handlebars = require('handlebars');
-let parser = new xml2js.Parser();
+import program from 'commander';
+import fs from 'fs';
+import Handlebars from 'handlebars';
+import xml2js from 'xml2js';
 
-var program = require('commander');
+let parser = new xml2js.Parser();
 
 program
   .version('0.0.1')

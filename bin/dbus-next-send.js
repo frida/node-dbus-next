@@ -2,8 +2,9 @@
 
 // TODO: test signal sending
 
-const program = require('commander');
-const dbus = require('../');
+import program from 'commander';
+import * as dbus from '../index.js';
+
 const Message = dbus.Message;
 const {
   METHOD_RETURN,

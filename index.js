@@ -1,10 +1,7 @@
-const constants = require('./lib/constants');
-const MessageBus = require('./lib/bus');
-const errors = require('./lib/errors');
-const {Variant} = require('./lib//variant');
-const {Message} = require('./lib/message-type.js');
-const iface = require('./lib/service/interface');
-const createConnection = require('./lib/connection.js');
+import MessageBus from './lib/bus.js';
+import createConnection from './lib/connection.js';
+
+import process from 'process';
 
 let createClient = function(params) {
   let connection = createConnection(params || {});
@@ -20,7 +17,7 @@ let createClient = function(params) {
  * @param {object} [options] - Options for `MessageBus` creation.
  * @param {object} [options.negotiateUnixFd] - Whether this bus should support the negotiation of Unix file descriptors.
  */
-module.exports.systemBus = function(opts) {
+export function systemBus(opts) {
   if(!opts)
     opts = {};
   return createClient({
@@ -29,7 +26,7 @@ module.exports.systemBus = function(opts) {
       process.env.DBUS_SYSTEM_BUS_ADDRESS ||
       'unix:path=/var/run/dbus/system_bus_socket'
   });
-};
+}
 
 /**
  * Create a new {@link MessageBus} client on the DBus session bus to connect to
@@ -43,9 +40,9 @@ module.exports.systemBus = function(opts) {
  * `DBUS_SESSION_BUS_ADDRESS` environment variable and when that is not
  * available, found from the `$HOME/.dbus` directory.
  */
-module.exports.sessionBus = function(opts) {
+export function sessionBus(opts) {
   return createClient(opts);
-};
+}
 
 /**
  * Create a new {@link MessageBus} client to communicate peer-to-peer.
@@ -53,9 +50,9 @@ module.exports.sessionBus = function(opts) {
  * @param {object} [stream] - Duplex stream for communication.
  * @param {object} [options] - Options for `MessageBus` creation.
  */
-module.exports.peerBus = function(stream, opts) {
+export function peerBus(stream, opts) {
   return createClient({ ...opts, stream });
-};
+}
 
 /**
  * Use JSBI as a polyfill for long integer types ('x' and 't') in the client
@@ -66,16 +63,19 @@ module.exports.peerBus = function(stream, opts) {
  * @function
  * @param {boolean} compat - pass `true` to use JSBI.
  */
-module.exports.setBigIntCompat = require('./lib/library-options').setBigIntCompat
+export { setBigIntCompat } from './lib/library-options.js';
 
-module.exports.NameFlag = constants.NameFlag;
-module.exports.RequestNameReply = constants.RequestNameReply;
-module.exports.ReleaseNameReply = constants.ReleaseNameReply;
-module.exports.MessageType = constants.MessageType;
-module.exports.MessageFlag = constants.MessageFlag;
+export {
+  NameFlag,
+  RequestNameReply,
+  ReleaseNameReply,
+  MessageType,
+  MessageFlag
+} from './lib/constants.js';
 
-module.exports.interface = iface;
-module.exports.Variant = Variant;
-module.exports.Message = Message;
-module.exports.validators = require('./lib/validators');
-module.exports.DBusError = errors.DBusError;
+export * as interface from './lib/service/interface.js';
+export { Variant } from './lib/variant.js';
+export { Message } from './lib/message-type.js';
+export * as validators from './lib/validators.js';
+
+export { DBusError } from './lib/errors.js';
