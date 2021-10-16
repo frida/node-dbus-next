@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import * as dbus from '../index.js';
+import dbus from '../index.js';
 import fs from 'fs';
 import Handlebars from 'handlebars';
 import path from 'path';

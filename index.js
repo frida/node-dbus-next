@@ -1,5 +1,18 @@
 import MessageBus from './lib/bus.js';
 import createConnection from './lib/connection.js';
+import {
+  NameFlag,
+  RequestNameReply,
+  ReleaseNameReply,
+  MessageType,
+  MessageFlag
+} from './lib/constants.js';
+import { DBusError } from './lib/errors.js';
+import * as iface from './lib/service/interface.js';
+import { setBigIntCompat } from './lib/library-options.js';
+import { Message } from './lib/message-type.js';
+import * as validators from './lib/validators.js';
+import { Variant } from './lib/variant.js';
 
 import process from 'process';
 
@@ -63,19 +76,34 @@ export function peerBus(stream, opts) {
  * @function
  * @param {boolean} compat - pass `true` to use JSBI.
  */
-export { setBigIntCompat } from './lib/library-options.js';
+export { setBigIntCompat };
 
 export {
   NameFlag,
   RequestNameReply,
   ReleaseNameReply,
   MessageType,
-  MessageFlag
-} from './lib/constants.js';
+  MessageFlag,
+  iface as interface,
+  Variant,
+  Message,
+  validators,
+  DBusError,
+};
 
-export * as interface from './lib/service/interface.js';
-export { Variant } from './lib/variant.js';
-export { Message } from './lib/message-type.js';
-export * as validators from './lib/validators.js';
-
-export { DBusError } from './lib/errors.js';
+export default {
+  systemBus,
+  sessionBus,
+  peerBus,
+  setBigIntCompat,
+  NameFlag,
+  RequestNameReply,
+  ReleaseNameReply,
+  MessageType,
+  MessageFlag,
+  interface: iface,
+  Variant,
+  Message,
+  validators,
+  DBusError,
+};
