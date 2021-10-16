@@ -3,7 +3,7 @@
 // TODO: test signal sending
 
 import program from 'commander';
-import dbus from '../index.js';
+import * as dbus from '../index.js';
 
 const Message = dbus.Message;
 const {
