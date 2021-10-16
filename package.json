@@ -1,7 +1,7 @@
 {
   "name": "@frida/dbus",
   "description": "DBus library for JavaScript environments",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "access": "public"
   },
