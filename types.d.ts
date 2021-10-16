@@ -17,7 +17,6 @@ declare module '@frida/dbus' {
         NO_AUTO_START,
     }
 
-
     export namespace interface {
         export const ACCESS_READ = 'read';
         export const ACCESS_WRITE = 'write';
@@ -109,6 +108,12 @@ declare module '@frida/dbus' {
         static IN_QUEUE: number;
         static EXISTS: number;
         static ALREADY_OWNER: number;
+    }
+
+    export class ReleaseNameReply {
+        static RELEASED: number;
+        static NON_EXISTENT: number;
+        static NOT_OWNER: number;
     }
 
     export class MessageBus extends EventEmitter {
