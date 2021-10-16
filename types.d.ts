@@ -1,5 +1,4 @@
-
-declare module 'dbus-next' {
+declare module '@frida/dbus' {
     import { EventEmitter } from "events";
     import { Duplex } from "stream";
 
