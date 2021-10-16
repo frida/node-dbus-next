@@ -1,6 +1,6 @@
-# dbus-next
+# @frida/dbus
 
-The next great DBus library for NodeJS.
+Frida-optimized ESM fork of https://github.com/dbusjs/node-dbus-next.
 
 [Documentation](https://acrisci.github.io/doc/node-dbus-next/)
 

@@ -1,6 +1,10 @@
 {
-  "name": "dbus-next",
-  "version": "0.10.2",
+  "name": "@frida/dbus",
+  "description": "DBus library for JavaScript environments",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "dbus",
     "dcop",
@@ -9,7 +13,6 @@
     "gnome",
     "kde"
   ],
-  "description": "The next great DBus library for Node",
   "type": "module",
   "files": [
     "lib/*",
