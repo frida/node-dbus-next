@@ -147,7 +147,11 @@ declare module '@frida/dbus' {
         getInterface<T extends ClientInterface>(name: string): T;
     }
     export interface ClientInterface extends EventEmitter {
-        [name: string]: Function;
+        [name: string]: Function | ProxyMethod;
+    }
+    export interface ProxyMethod<T extends (...args: any) => any = any> {
+        (...args: Parameters<T>): ReturnType<T>;
+        begin(...args: Parameters<T>): void;
     }
 
     export type AuthMethod = 'EXTERNAL' | 'DBUS_COOKIE_SHA1' | 'ANONYMOUS';
